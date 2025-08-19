@@ -1,0 +1,2 @@
+# amogusi
+dwmdwmtrr
