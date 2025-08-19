@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #needed depends
-sudo pacman -S ttf-jetbrains-mono kitty dmenu xorg xorg-xinit feh xcompmgr flatpak git wget curl flameshot telegram-desktop steam discord pavucontrol nwg-look jdk8-openjdk jdk11-openjdk jdk17-openjdk jdk21-openjdk jdk-openjdk
+sudo pacman -S i3lock ttf-jetbrains-mono kitty dmenu xorg xorg-xinit feh xcompmgr flatpak git wget curl flameshot telegram-desktop steam discord pavucontrol nwg-look jdk8-openjdk jdk11-openjdk jdk17-openjdk jdk21-openjdk jdk-openjdk
 
 #flatpaki 💀💀
 flatpak install sober -y
@@ -26,6 +26,9 @@ mv config.h ~/.dwm
 mkdir ~/.config/wlogout
 mv layout ~/.config/wlogout/
 mv info.sh ~/.dwm
+mkdir ~/.wallpapers
+mv uranus.jpg ~/.wallpapers/
+mv uranus.png ~/.wallpapers/
 
 #DLYA RABOTI SKRIPTA
 sudo pacman -S xkb-switch      # Для определения раскладки клавиатуры
