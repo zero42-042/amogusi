@@ -1,0 +1,38 @@
+{
+    "label" : "lock",
+    "action" : "i3lock -i ~/.wallpapers/uranus.png",
+    "text" : "Lock",
+    "keybind" : "l"
+}
+{
+    "label" : "hibernate",
+    "action" : "mpv --no-video --quiet ~/.dwm/logoff.wav; systemctl hibernate",
+    "text" : "Hibernate",
+    "keybind" : "h"
+}
+{
+    "label" : "logout",
+    "action" : "pkill dwm",
+    "text" : "Exit",
+    "keybind" : "e"
+}
+{
+    "label" : "shutdown",
+    "action" : "mpv --no-video --quiet ~/.dwm/logoff.wav; systemctl poweroff",
+    "text" : "Shutdown",
+    "keybind" : "s"
+}
+{
+    "label" : "suspend",
+    "action" : "mpv --no-video --quiet ~/.dwm/logoff.wav; systemctl suspend",
+    "text" : "Suspend",
+    "keybind" : "u"
+}
+{
+    "label" : "reboot",
+    "action" : "mpv --no-video --quiet ~/.dwm/logoff.wav; systemctl reboot",
+    "text" : "Reboot",
+    "keybind" : "r"
+}
+
+
