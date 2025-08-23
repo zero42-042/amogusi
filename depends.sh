@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #needed depends
-sudo pacman -S ly i3lock ttf-jetbrains-mono kitty dmenu xorg xorg-xinit feh xcompmgr flatpak git wget curl flameshot telegram-desktop steam discord pavucontrol nwg-look jdk8-openjdk jdk11-openjdk jdk17-openjdk jdk21-openjdk jdk-openjdk mpv
+sudo pacman -S ly i3lock ttf-jetbrains-mono kitty dmenu xorg xorg-xinit feh xcompmgr flatpak git wget curl flameshot telegram-desktop steam discord pavucontrol nwg-look jdk8-openjdk jdk11-openjdk jdk17-openjdk jdk21-openjdk jdk-openjdk mpv virt-manager qemu-full libvirt edk2-ovmf dnsmasq iptables-nft
 
 #flatpaki 💀💀
 flatpak install sober -y
@@ -59,6 +59,12 @@ sudo bash main_script.sh
 
 cd ~/.dwm
 sudo make clean install
+
+sudo usermod -aG libvirt $(whoami)
+sudo systemctl enable --now libvirtd.service
+sudo virsh net-autostart default
+sudo virsh net-start default
+
 
 echo "Done!"
 # blya budet smeshno esli ne zarabotaet
