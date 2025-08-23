@@ -39,6 +39,8 @@ mv uranus.jpg ~/.wallpapers/
 mv uranus.png ~/.wallpapers/
 mv startup.wav ~/.dwm/
 mv logoff.wav ~/.dwm/
+mkdir ~/.config/kitty 
+mv kitty.conf ~/.config/kitty/
 
 #DLYA RABOTI SKRIPTA
 yay -S xkb-switch      # Для определения раскладки клавиатуры
@@ -54,6 +56,9 @@ sudo systemctl enable ly
 sudo git clone https://github.com/Sergeydigl3/zapret-discord-youtube-linux.git /opt/zapret
 cd /opt/zapret
 sudo bash main_script.sh
+
+cd ~/.dwm
+sudo make clean install
 
 echo "Done!"
 # blya budet smeshno esli ne zarabotaet
