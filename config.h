@@ -32,7 +32,7 @@ static const unsigned int gappih         = 10;  /* horiz inner gap between windo
 static const unsigned int gappiv         = 10;  /* vert inner gap between windows */
 static const unsigned int gappoh         = 10;  /* horiz outer gap between windows and screen edge */
 static const unsigned int gappov         = 10;  /* vert outer gap between windows and screen edge */
-static const int smartgaps_fact          = 1;  /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
+static const int smartgaps_fact          = 1;   /* gap factor when there is only one client; 0 = no gaps, 3 = 3x outer gaps */
 #endif // VANITYGAPS_PATCH
 #if AUTOSTART_PATCH
 static const char autostartblocksh[]     = "autostart_blocking.sh";
@@ -169,9 +169,9 @@ static void (*bartabmonfns[])(Monitor *) = { NULL /* , customlayoutfn */ };
 #if BAR_PANGO_PATCH
 static const char font[]                 = "monospace 10";
 #else
-static const char *fonts[]               = { "JetBrains Mono:size=10" };
+static const char *fonts[]               = {     "FiraCode Nerd Font:size=13:antialias=true:autohint=true", "Noto Color Emoji:size=13:antialias=true:autohint=true",  "Font Awesome 6 Free:size=13" };
 #endif // BAR_PANGO_PATCH
-static const char dmenufont[]            = "monospace:size=10";
+static const char dmenufont[]            = "monospace:size=13";
 
 static char c000000[]                    = "#000000"; // placeholder value
 
@@ -661,6 +661,16 @@ static const int nstack      = 0;    /* number of clients in primary stack area 
 #endif // FLEXTILE_DELUXE_LAYOUT
 static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
 static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen window */
+static const int refreshrate = 120;  /* refresh rate (per second) for client move/resize */
+#if PLACEMOUSE_PATCH
+static const int refreshrate_placemouse = 60; /* refresh rate (per second) for placemouse */
+#endif // PLACEMOUSE_PATCH
+#if DRAGMFACT_PATCH
+static const int refreshrate_dragmfact = 40; /* refresh rate (per second) for dragmfact */
+#endif // DRAGMFACT_PATCH
+#if DRAGCFACT_PATCH
+static const int refreshrate_dragcfact = 60; /* refresh rate (per second) for dragcfact */
+#endif // DRAGCFACT_PATCH
 #if DECORATION_HINTS_PATCH
 static const int decorhints  = 1;    /* 1 means respect decoration hints */
 #endif // DECORATION_HINTS_PATCH
@@ -801,8 +811,8 @@ static const char *xkb_layouts[]  = {
 
 /* key definitions */
 #define MODKEY Mod1Mask
-#include <X11/XF86keysym.h>
 #if COMBO_PATCH && SWAPTAGS_PATCH && TAGOTHERMONITOR_PATCH
+#include <X11/XF86keysym.h>
 #define TAGKEYS(KEY,TAG) \
 	{ MODKEY,                       KEY,      comboview,      {.ui = 1 << TAG} }, \
 	{ MODKEY|ControlMask,           KEY,      toggleview,     {.ui = 1 << TAG} }, \
@@ -900,8 +910,6 @@ static const char *dmenucmd[] = {
 };
 static const char *termcmd[]  = { "kitty", NULL };
 static const char *flameshot[] = { "flameshot", "gui", NULL };
-static const char *brightness_up[]   = { "brightnessctl", "set", "5%+", NULL };
-static const char *brightness_down[] = { "brightnessctl", "set", "5%-", NULL };
 
 #if BAR_STATUSCMD_PATCH
 #if BAR_DWMBLOCKS_PATCH
@@ -1036,11 +1044,12 @@ static const Key keys[] = {
 	#endif // KEYMODES_PATCH
 	{ MODKEY,                       XK_p,          spawn,                  {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return,     spawn,                  {.v = termcmd } },
-        { 0,                            XF86XK_AudioMute,           spawn,          SHCMD("pactl set-sink-mute 0 toggle") },
-        { 0,                            XF86XK_AudioLowerVolume,    spawn,          SHCMD("pactl set-sink-volume 0 -5%") },
-        { 0,                            XF86XK_AudioRaiseVolume,    spawn,          SHCMD("pactl set-sink-volume 0 +5%") },
-        { 0,                            XF86XK_MonBrightnessUp,     spawn,          {.v = brightness_up } },
-        { 0,                            XF86XK_MonBrightnessDown,   spawn,          {.v = brightness_down } },
+{ 0, 0x1008ff11, spawn, SHCMD("pactl set-sink-volume 0 -5%") }, // XF86XK_AudioLowerVolume
+{ 0, 0x1008ff13, spawn, SHCMD("pactl set-sink-volume 0 +5%") }, // XF86XK_AudioRaiseVolume
+{ 0, 0x1008ff02, spawn, SHCMD("brightnessctl set 5%+") },       // XF86XK_MonBrightnessUp
+{ 0, 0x1008ff03, spawn, SHCMD("brightnessctl set 5%-") },       // XF86XK_MonBrightnessDown
+{ 0, 0x1008ff12, spawn, SHCMD("pactl set-sink-mute 0 toggle") }, // XF86XK_AudioMute
+{ 0, 0x1008ffb2, spawn, SHCMD("pactl set-source-mute @DEFAULT_SOURCE@ toggle") }, // XF86XK_AudioMicMute
         { 0,                            XK_Print,                   spawn,          {.v = flameshot} },
         { MODKEY,                       XK_z,                       spawn,          SHCMD("zen-browser") },
         { MODKEY,                       XK_t,                       spawn,          SHCMD("Telegram") },
