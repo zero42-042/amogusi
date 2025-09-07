@@ -4,15 +4,15 @@
 setxkbmap -layout us,ru -variant , -option grp:win_space_toggle &
 
 # wallpaper
-/home/zero42/.fehbg &
+~/.fehbg &
 
 sleep 0.5
 
 # transparency
-/home/zero42/.xcompmgr &
+~/.xcompmgr &
 
 # information about system
-/home/zero42/.dwm/info.sh &
+~/.dwm/info.sh &
 
 # startup sound
 mpv --no-video --quiet /home/zero42/.dwm/startup.wav &
