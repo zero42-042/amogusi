@@ -15,7 +15,7 @@ sleep 0.5
 ~/.dwm/info.sh &
 
 # startup sound
-mpv --no-video --quiet /home/zero42/.dwm/startup.wav &
+mpv --no-video --quiet ~/.dwm/startup.wav &
 
 # start dwm
 exec dwm 
