@@ -58,9 +58,6 @@ sudo make clean install
 sudo usermod -aG libvirt $(whoami)
 sudo systemctl enable --now libvirtd.service
 sudo virsh net-autostart default
-sudo virsh net-start default
-
 
 echo "Done!"
-# blya budet smeshno esli ne zarabotaet
-
+# budet smeshno esli ne zarabotaet
