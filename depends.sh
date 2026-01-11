@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #needed depends
-sudo pacman -S ly i3lock ttf-jetbrains-mono kitty dmenu xorg xorg-xinit feh xcompmgr flatpak git wget curl flameshot telegram-desktop steam discord pavucontrol nwg-look jdk8-openjdk jdk11-openjdk jdk17-openjdk jdk21-openjdk jdk-openjdk mpv virt-manager qemu-full libvirt edk2-ovmf dnsmasq iptables-nft
+sudo pacman -S ly i3lock ttf-jetbrains-mono kitty dmenu xorg xorg-xinit feh xcompmgr flatpak git wget curl flameshot telegram-desktop steam discord pavucontrol nwg-look jdk8-openjdk jdk11-openjdk jdk17-openjdk jdk21-openjdk jdk-openjdk mpv virt-manager qemu-full libvirt edk2-ovmf dnsmasq iptables-nft brightnessctl
 
 #flatpaki 💀💀
 flatpak install sober -y
@@ -51,11 +51,6 @@ sudo pacman -S procps-ng       # Для pgrep (обычно уже устано�
 
 #drochim login manager
 sudo systemctl enable ly
-
-#ustanovka zapreta
-sudo git clone https://github.com/Sergeydigl3/zapret-discord-youtube-linux.git /opt/zapret
-cd /opt/zapret
-sudo bash main_script.sh
 
 cd ~/.dwm
 sudo make clean install
