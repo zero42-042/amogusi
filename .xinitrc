@@ -6,7 +6,7 @@ setxkbmap -layout us,ru -variant , -option grp:win_space_toggle &
 # wallpaper
 ~/.fehbg &
 
-sleep 0.5
+sleep 0.1
 
 # transparency
 ~/.xcompmgr &
